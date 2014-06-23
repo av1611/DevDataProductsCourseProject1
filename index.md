@@ -47,13 +47,28 @@ can be added to the table below each country.</p>
 (Per 100,000 Population)" supplied by the World Health Organization. It is
 read into R as follows:</p>
 
-```{r}
+
+```r
 temp <- tempfile(); url <- "http://apps.who.int/gho/athena/api/GHO/WHS2_138.csv?profile=verbose"
 download.file(url, temp); data <- read.csv(temp); unlink(temp)
 ```
 
-```{r, echo = F}
-names(data)
+```
+## Warning: downloaded length 67846 != reported length 200
+```
+
+
+```
+##  [1] "GHO..CODE."             "GHO..DISPLAY."         
+##  [3] "GHO..URL."              "PUBLISHSTATE..CODE."   
+##  [5] "PUBLISHSTATE..DISPLAY." "PUBLISHSTATE..URL."    
+##  [7] "YEAR..CODE."            "YEAR..DISPLAY."        
+##  [9] "YEAR..URL."             "REGION..CODE."         
+## [11] "REGION..DISPLAY."       "REGION..URL."          
+## [13] "COUNTRY..CODE."         "COUNTRY..DISPLAY."     
+## [15] "COUNTRY..URL."          "Display.Value"         
+## [17] "Numeric"                "Low"                   
+## [19] "High"                   "Comments"
 ```
 
 --- 

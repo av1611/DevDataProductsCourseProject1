@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Deaths Due To HIV/AIDS</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Deaths Due To HIV/AIDS">
+  <meta name="author" content="Alexis">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Deaths Due To HIV/AIDS</h1>
+    <h2>An Analysis of World Health Organization Data</h2>
+    <p>Alexis<br/>Coursera Student</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>The input</h2>
+  </hgroup>
+  <article data-timings="">
+    <div id="container" style="width:900px">
+
+<div id="image1" style="width:240px;float:left">
+
+<img src="https://raw.githubusercontent.com/av1611/DevDataProductsCourseProject1/gh-pages/figures/input.jpeg" alt="Shiny Input" width="220" height="280"
+style="border:1px solid black"><br><br>
+
+<img src="https://raw.githubusercontent.com/av1611/DevDataProductsCourseProject1/gh-pages/figures/mean.jpeg" alt="Adding a mean" width="160" height="160"
+style="border:1px solid black">
+
+</div>
+
+<div id="text1" style="width:660px;float:right">
+
+<br><p>In order to explore the AIDS death toll, single or multiple countries can
+be selected. Per country, estimates for each of the years 2001 and 2012 are
+registered (although missing values may occur). For the countries selected,
+the respective death toll will be displayed in a table and a bar chart.</p>
+
+<br><br><br>
+
+<p>If adding a mean is desired, a row denoting the mean of the annual estimates 
+can be added to the table below each country.</p>
+
+</div></div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>The data set</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Background for this application is the data set "Deaths Due To HIV/AIDS 
+(Per 100,000 Population)" supplied by the World Health Organization. It is
+read into R as follows:</p>
+
+<pre><code class="r">temp &lt;- tempfile(); url &lt;- &quot;http://apps.who.int/gho/athena/api/GHO/WHS2_138.csv?profile=verbose&quot;
+download.file(url, temp); data &lt;- read.csv(temp); unlink(temp)
+</code></pre>
+
+<pre><code>## Warning: downloaded length 67846 != reported length 200
+</code></pre>
+
+<pre><code>##  [1] &quot;GHO..CODE.&quot;             &quot;GHO..DISPLAY.&quot;         
+##  [3] &quot;GHO..URL.&quot;              &quot;PUBLISHSTATE..CODE.&quot;   
+##  [5] &quot;PUBLISHSTATE..DISPLAY.&quot; &quot;PUBLISHSTATE..URL.&quot;    
+##  [7] &quot;YEAR..CODE.&quot;            &quot;YEAR..DISPLAY.&quot;        
+##  [9] &quot;YEAR..URL.&quot;             &quot;REGION..CODE.&quot;         
+## [11] &quot;REGION..DISPLAY.&quot;       &quot;REGION..URL.&quot;          
+## [13] &quot;COUNTRY..CODE.&quot;         &quot;COUNTRY..DISPLAY.&quot;     
+## [15] &quot;COUNTRY..URL.&quot;          &quot;Display.Value&quot;         
+## [17] &quot;Numeric&quot;                &quot;Low&quot;                   
+## [19] &quot;High&quot;                   &quot;Comments&quot;
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>The output</h2>
+  </hgroup>
+  <article data-timings="">
+    <div id="container" style="width:900px">
+
+<div id="image2" style="width:380px;float:left">
+<img src="https://raw.githubusercontent.com/av1611/DevDataProductsCourseProject1/gh-pages/figures/output.jpeg" alt="Shiny Output" width="380" height="500"
+style="border:1px solid black">
+</div>
+
+<div id="text2" style="width:420px;float:right">
+
+<br><p>Once countries have been selected, their death toll per 100,000 citizens
+is displayed in a table. Per country,
+a measurement for each of the years 2001 and 2012 is listed.</p><br>
+
+<p>If no countries were chosen for which missing values are registered, the
+table is accompanied by a bar chart. It visualizes the death ratio for each
+country and year.</p>
+
+</div></div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <article data-timings="">
+    <div id="container" style="width:900px">
+
+<div id="image3" style="width:480px;float:left">
+<br><img src="https://raw.githubusercontent.com/av1611/DevDataProductsCourseProject1/gh-pages/figures/total.jpeg" alt="Shiny Total" width="460" height="540"
+style="border:1px solid black">
+</div>
+
+<div id="text3" style="width:420px;float:right">
+<br><br><br><br><br><center><h1>Have fun exploring!</h1></center>
+</div>
+
+<p></div></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='The input'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='The data set'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='The output'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title=''>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
